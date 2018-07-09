@@ -1,0 +1,10 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/poc
+    docker:
+     - image: maven:latest
+    steps:
+     - checkout
+     - run: mvn install package
+     - store_artifacts: target/poc-0.0.1-SNAPSHOT.jar
