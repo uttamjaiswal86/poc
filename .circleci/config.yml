@@ -1,11 +1,10 @@
-version: 2 # use CircleCI 2.0
-jobs: # a collection of steps
-  build: # runs not using Workflows must have a `build` job as entry point
+version: 2
+jobs:
+  build:
+    working_directory: ~/poc
     docker:
      - image: circleci/openjdk:8-jdk-browsers
     steps:
      - checkout
      - run: mvn dependency:go-offline
      - run: mvn package
-     - store_artifacts: 
-        path target/poc-0.0.1-SNAPSHOT.jar
